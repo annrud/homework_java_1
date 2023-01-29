@@ -11,12 +11,18 @@ public class Palindrome {
         System.out.println("Программа принимает на вход строку и " +
                 "определяет является ли строка палиндромом.");
         System.out.print("Введите строку: ");
-        String str = in.nextLine();
+        String str = in.nextLine().toLowerCase().replace(" ", "");
         in.close();
-        StringBuilder strBuild = new StringBuilder();
-        for (int i = str.length()-1; i > -1; i--) {
-            strBuild.append(str.charAt(i));
+        System.out.println(str);
+        int left = 0;
+        int right = str.length() - 1;
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
         }
-        return strBuild.toString().equals(str);
+        return true;
     }
 }
